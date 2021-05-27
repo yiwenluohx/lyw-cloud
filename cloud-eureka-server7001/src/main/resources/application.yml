@@ -2,6 +2,9 @@ server:
   port: 7001
 
 eureka:
+  server:
+    enable-self-preservation: false #关闭自我保护机制，保证不可用服务被及时剔除
+    eviction-interval-timer-in-ms: 2000
   instance:
     hostname: eureka7001.com  #集群配置，host先绑定
   #    hostname: localhost #单机处理方式
