@@ -1,0 +1,15 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-consumer-order
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+        enabled: true #解决restTemplate负载链接拒绝
+        prefer-ip-address: true
+#        ip-address: 127.0.0.1
