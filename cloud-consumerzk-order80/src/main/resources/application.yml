@@ -1,12 +1,12 @@
 server:
-  port: 8004
+  port: 80
 
 spring:
   application:
-    name: cloud-provider-payment
+    name: cloud-consumer-order
   cloud:
     zookeeper:
       connect-string: 10.254.3.14:2181
-      discovery:  #使用@LoadBalanced后，服务名访问出现链接超时问题
+      discovery:   #使用@LoadBalanced后，服务名访问出现链接超时问题
         enabled: true
         instance-host: 127.0.0.1
