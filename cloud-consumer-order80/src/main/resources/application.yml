@@ -6,6 +6,9 @@ spring:
     name: cloud-order-service
 
 eureka:
+  instance: #解决restTemplate负载链接超时异常
+    instance-id: order80
+    prefer-ip-address: true
   client:
     register-with-eureka: true #将自己注册到服务中心
     fetch-registry: true  #从注册中心获取服务

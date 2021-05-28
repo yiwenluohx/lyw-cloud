@@ -14,7 +14,7 @@ spring:
     password: root
 
 eureka:
-  instance:
+  instance: #解决restTemplate负载链接超时异常
     instance-id: payment8001
     prefer-ip-address: true
     lease-renewal-interval-in-seconds: 1  #Eureka客户端向服务端发送心跳的时间间隔，单位为妙（默认是30秒）
@@ -23,8 +23,8 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-#      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka  #集群版
-      defaultZone: http://localhost:7001/eureka  #单机处理
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka  #集群版
+#      defaultZone: http://localhost:7001/eureka  #单机处理
 
 mybatis:
   mapperLocations: classpath:mapper/*.xml
