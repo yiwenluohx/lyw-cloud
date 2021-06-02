@@ -10,6 +10,9 @@ spring:
           uri: git@github.com:yiwenluohx/springcloud-config.git
           search-paths: #搜索目录
             - springcloud-config
+          force-pull: true
+          username: xxxx
+          password: xxxxx
       label: main #读取的分支
 
 eureka:
