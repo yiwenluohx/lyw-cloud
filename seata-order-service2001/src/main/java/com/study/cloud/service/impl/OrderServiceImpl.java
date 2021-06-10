@@ -5,6 +5,7 @@ import com.study.cloud.domain.Order;
 import com.study.cloud.service.AccountService;
 import com.study.cloud.service.OrderService;
 import com.study.cloud.service.StorageService;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -29,8 +30,10 @@ public class OrderServiceImpl implements OrderService {
     private StorageService storageService;
 
     @Override
+    @GlobalTransactional(name="fsp-create-order", rollbackFor = Exception.class)
     public void create(Order order) {
         log.info("--->开始新建订单");
+        order.setStatus(0);
         orderDao.create(order);
         log.info("--->订单微服务开始调用库存，做扣减Count");
         storageService.decrease(order.getProductId(), order.getCount());
